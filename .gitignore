@@ -1,0 +1,16 @@
+# Node.js
+node_modules/
+
+# PHP
+vendor/
+.phpunit.result.cache
+
+# Go
+*.exe
+*.out
+*.test
+
+# IDE
+.DS_Store
+.idea/
+.vscode/
