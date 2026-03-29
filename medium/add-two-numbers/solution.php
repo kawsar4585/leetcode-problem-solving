@@ -2,26 +2,32 @@
 class ListNode {
     public $val = 0;
     public $next = null;
-    function __construct($val, $next=null)
-    {
+    function __construct($val = 0, $next = null) {
         $this->val = $val;
         $this->next = $next;
     }
 }
 
 class Solution {
-    function addToNumbers($l1, $l2) {
-        $carry = 0;
+    /**
+     * @param ListNode $l1
+     * @param ListNode $l2
+     * @return ListNode
+    */
+
+    function addTwoNumbers($l1, $l2) {
         $head = new ListNode(0);
         $current = $head;
+        $carry = 0;
 
-        while ($l1 !== null || $l2 !== null || $carry > 0) {
+        while($l1 !== null || $l2 !== null || $carry > 0){
             $sum = $carry;
-            if ($l1 !==null){
+            if ($l1 !== null) {
                 $sum += $l1->val;
                 $l1 = $l1->next;
             }
-            if ($l2 !== null) {
+
+            if($l2 !== null) {
                 $sum += $l2->val;
                 $l2 = $l2->next;
             }
@@ -30,16 +36,16 @@ class Solution {
             $current->next = new ListNode($sum % 10);
             $current = $current->next;
         }
-
         return $head->next;
     }
+
 }
 
-$solution = new Solution();
-$l1 = new ListNode(2, new ListNode(4, null));
-$l2 = new ListNode(5, new Listnode(6, new ListNode(4, null)));
+$l1 = new ListNode(9, new ListNode(9, null));
+$l2 = new ListNode(1, null);
 
-$result = $solution->addToNumbers($l1, $l2);
+$solution = new Solution();
+$result = $solution->addTwoNumbers($l1, $l2);
 while ($result !== null) {
     echo $result->val . " ";
     $result = $result->next;
